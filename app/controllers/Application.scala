@@ -18,12 +18,11 @@ class Application @Inject()(val messagesApi: MessagesApi) extends Controller wit
 
   def createCD = Action { implicit request =>
     val formValidationResult = CD.createCDForm.bindFromRequest
-
-
     formValidationResult.fold({ formWithErrors =>
       BadRequest(views.html.listCDs(CD.cds, formWithErrors)) //form with errors
-    },{ cd => CD.cds.append(cd)                              //form with no errors
-       Redirect(routes.Application.listCDs)
+    }, { cd =>
+      CD.cds.append(cd) //form with no errors
+      Redirect(routes.Application.listCDs)
     }
    )
   }

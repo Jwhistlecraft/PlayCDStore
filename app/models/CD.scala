@@ -5,23 +5,25 @@ import play.api.data.Forms._
 
 import scala.collection.mutable.ArrayBuffer
 
-case class CD(name: String, price: Int)
+case class CD(index:Option[Int], title: String, genre:String, artist:String, starRating:Int, price: Int)
+
+//case class SelectCD(title:String)
 
 object CD {
 
   val createCDForm = Form(
     mapping(
-      "name" -> nonEmptyText,
-      "price" -> number(min = 0, max = 100)
+      "index" -> optional(number),
+      "title" -> nonEmptyText,
+      "genre" -> nonEmptyText,
+      "artist" -> nonEmptyText,
+      "starRating" -> number(min = 0, max = 5),
+      "price" -> number(min = 0, max = 1000)
     )
     (CD.apply)(CD.unapply)
   )
 
-  val cds = ArrayBuffer(
-    CD("CD 1", 123),
-    CD("CD 2", 456),
-    CD("CD 3", 789)
-  )
+  val cds: ArrayBuffer[CD] = ArrayBuffer[CD]()
 
 }
 
