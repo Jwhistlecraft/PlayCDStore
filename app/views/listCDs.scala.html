@@ -13,14 +13,14 @@
     <tbody>
     @for(cd <- cds) {
       <tr><td>@cd.title </td><td>@cd.genre </td><td>@cd.artist </td><td>@cd.starRating </td><td>@cd.price </td></tr>
-        <a href="@routes.Application.editItem(index)">edit</a>
+        <a href="@routes.Application.editCD(index)">edit</a>
     }
     </tbody>
   </table>
 
     <h1>@if(CD.isEmpty) { No items } else { Items }</h1>
     <ul>
-    @for((item, index) <- items.zipWithIndex) {
+    @for((item, index) <- cds.zipWithIndex) {
         <li>@display(item, index)</li>
     }
     </ul>

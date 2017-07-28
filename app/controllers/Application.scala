@@ -27,6 +27,19 @@ class Application @Inject()(val messagesApi: MessagesApi) extends Controller wit
    )
   }
 
+  def editCD(index: Int):  Action[AnyContent] = Action { implicit request =>
+    val eCD = CD.cds(index)
+    val CDData = eCD(Some(index),
+      CD.index,
+      CD.title,
+      CD.genre,
+      CD.artist,
+      CD.starRating,
+      CD.price,
+      )
+    Ok(views.html.CD(CDData.CD, CDData.createCDForm.fill(CDData)))
+  }
+
 }
 
 
