@@ -5,7 +5,12 @@ import play.api.data.Forms._
 
 import scala.collection.mutable.ArrayBuffer
 
-case class CD(index:Option[Int], title: String, genre:String, artist:String, starRating:Int, price: Int)
+case class CD(index:Option[Int],
+              title: String,
+              genre:String,
+              artist:String,
+              starRating:Int,
+              price: Int)
 
 //case class SelectCD(title:String)
 
